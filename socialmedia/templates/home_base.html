@@ -1,10 +1,8 @@
 {% include "./header.html" %}
-<body>
+<body class="column">
   {% include "./nav.html" %}
-  <div class="grid-containor">
+  <div class="mainBody">
     <div class="grid-x grid-margin-x">
-      <div class="cell large-3"></div>
-      <div class="cell large-5">
         {% block content %}
         {% include "./home_feed.html"%}
         {% endblock %}
@@ -15,5 +13,6 @@
         {% endblock %}
       </div>
     </div>
+    {% include "./footer.html" %}
   </div>
 </body>

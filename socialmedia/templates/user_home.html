@@ -1,0 +1,60 @@
+{% include "./header.html" %}
+<body>
+  {% include "./nav.html" %}
+  <div class="grid-containor">
+    <div class="grid-x grid-margin-x">
+      <div class="cell large-2"></div>
+      <div class="large-8 cell">
+        <div class="user-home-profile" id="user-home-profile-img">
+          {% if img_url %}
+            <img class="thumbnail" id="user-home-profile-thumbnail" src="{{ img_url }}" alt="user profile image">
+          {% else %}
+            <img class="thumbnail" id="user-home-profile-thumbnail" src="/static/media/blank.png" alt="user profile image">
+          {% endif %}
+        </div>
+        <div class="user-home-profile" id="user-home-profile-info">
+          <h4 >{{ user }} <a href="/profile" class="hollow button" id="edit-profile-button">edit profile</a></h4>
+          <p> {{ user.first_name}} {{ user.last_name}}</p>
+          <p>ocupation : {{ user_profile.ocupation }}</p>
+          <p>organization : {{ user_profile.organization }}</p>
+          <p>{{ user_profile.bio }}</p>
+          <p>{{ follower_count }} &nbsp;<a href="/friend_list/">Followers</a>&nbsp;&nbsp;&nbsp;
+          {{ following_count }} &nbsp;<a href="/friend_list/">Following</a></p>
+          <a href="#" class='button' onclick="overlay()" id="create-post-button">create new post</a>
+        </div>
+
+        <div id="overlay">
+          <div class="callout">
+            <form action="/user_home/" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              {{ post_form.as_p }}
+              <button type="submit" class="button" id="new-post-button">post</button>
+              <a href="#" onclick="overlay()" class="button alert" id="new-post-button">cancel</a>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="grid-containor">
+        <div class="grid-x grid-margin-x">
+          <div class="cell large-6"></div>
+          <div class="large-6 cell">
+            {% for post in posts %}
+            <div class="card">
+              {% if post.media %}
+              <img class="post-img" src="{{ post.media.url }}" >
+              {% endif %}
+              <div class="card-section">
+                <p>{{ post.text }} ({{ post.postDate }})</p>
+                <p><i class="fi-heart"></i> 1M likes</p>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          <div class="auto cell"></div>
+        </div>
+      </div>
+      <div class="cell auto"></div>
+    </div>
+  </div>
+  {% include "./footer.html" %}
+</body>

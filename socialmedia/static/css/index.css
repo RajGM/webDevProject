@@ -54,10 +54,6 @@ body{
     border-radius: 20px;
 }
 
-.mainBody{
-    background-color: aqua;
-}
-
 .footerBar{
     height: 30px;
     width: 80%;
@@ -78,4 +74,32 @@ a{
     text-decoration: none;
     color: black;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.mainBody{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border: 1px solid black;
+    background-color: aqua;
+}
+
+.feedDiv{
+    background-color: chartreuse;
+}
+
+.sideBar{
+    display: flex;
+    flex-direction: column;
+    background-color: bisque;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 5px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }

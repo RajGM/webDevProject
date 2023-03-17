@@ -1,4 +1,4 @@
-<div class="home-feed">
+<div class="feedDiv">
     {% for post in posts %}
     <div class="card" style='margin-top: 10px'>
       {% if post.media %}
@@ -7,9 +7,12 @@
       <div class="card-section">
         <p> user : <a href="/{{ post.user }}">{{ post.user }}</a> </p>
         <p>{{ post.text }} ({{ post.postDate }})</p>
-        <p><i class="fi-heart"></i>1M likes</p>
+        <p><i class="fi-heart"></i>{{post.likes}} </p>
       </div>
     </div>
     {% endfor %}
+    <div>
+      TEST DIV ME
+    </div>
   </div>
   

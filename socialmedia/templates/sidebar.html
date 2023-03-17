@@ -1,28 +1,19 @@
-{% if user.is_authenticated %}
-    <div class="sidebar">
-      <div class="sidebar-profile" id="sidebar-profile-img">
-        {% if user_profile.profileImage %}
-          <a href="/user_home"><img class="thumbnail" src="{{ img_url }}" alt="User profile image"></a>
-        {% else %}
-          <a href="/user_home"><img class="thumbnail" src="/static/media/blank.png" alt="Defalut preofile image"></a>
-        {% endif %}
-      </div>
-      <div class="sidebar-profile" id="sidebar-profile-user">
-        <p id='sidebar-profile-username'>{{ user.username }}</p>
-        <p id='sidebar-profile-name'>{{ user.first_name }} {{ user.last_name }}</p>
-      </div>
-    </div>
+<div class="sideBar">
+{% if user.is_authenticated %}  
+   
     <div class="sidebar-chat">
-      <h5><i class="fi-mail"></i> Chat rooms </h5>
+      <h5>Chat rooms </h5>
       <ul>
         {% for following in following_list %}
         <li><a href="/chat/{{ following.chat_room }}"> {{ following.user }} </a></li>
         {% endfor %}
       </ul>
     </div>
+  
   {% else %}
     <div class="callout">
-      <p>Please <a id="register-nav" href="/login">login</a> to your account.</p>
-      <p>Don't have an account? <a id="register-nav" href="/signup">sign up now!</a></p>
+      <p>This is a demo Page</p>
+      <p>LogIN to see the full page</a></p>
     </div>
   {% endif %}
+</div>

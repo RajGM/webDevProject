@@ -1,4 +1,30 @@
 <div class="navBar boderDiv">
+  {% if user.is_authenticated %}
+  <div >
+    {% if user_profile.profileImage %}
+    <div class="row">
+      <div>
+        <a href="/user_home">
+          <img src="{{ img_url }}" class="dp" />
+        </a>
+      </div>
+      <div>{{ user.username }}</div>
+    </div>
+    {% else %}
+    <div>
+      <a href="/user_home">Profile</a>
+    </div>
+    {% endif %}
+  </div>
+
+  {% else %}
+
+  <div>
+    <a href="/login">Login</a>
+  </div>
+
+  {% endif %}
+
   <div>
     <form class="search-bar" method="POST" action="{% url 'search-user'%}">
       {% csrf_token %}
@@ -8,25 +34,14 @@
       </button>
     </form>
   </div>
+
   <div class="navRightDiv">
-    {% if user.is_authenticated %} {% if user_profile.profileImage %}
-    <div>
-      <a href="/user_home">
-        <img src="{{ img_url }}" class="dp" />
-      </a>
-    </div>
-    {% else %}
-    <div>
-      <a href="/user_home">Profile</a>
-    </div>
-    {% endif %}
+    {% if user.is_authenticated %}
     <div>
       <a href="../logout" class="button"> Logout </a>
     </div>
     {% else %}
-    <div>
-      <a href="/login">Login</a>
-    </div>
+
     <div>
       <a href="/signup">Sign up</a>
     </div>

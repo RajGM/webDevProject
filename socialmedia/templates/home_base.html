@@ -2,17 +2,11 @@
 <body class="column">
   {% include "./nav.html" %}
   <div class="mainBody">
-    <div class="grid-x grid-margin-x">
-        {% block content %}
-        {% include "./home_feed.html"%}
-        {% endblock %}
-      </div>
-      <div class="cell auto">
-        {% block sidebar %}
-        {% include "./sidebar.html" %}
-        {% endblock %}
-      </div>
+    <div>NEWTEST Advetisement</div>
+    <div>
+      {% block content %} {% include "./home_feed.html"%} {% endblock %}
     </div>
-    {% include "./footer.html" %}
+    <div>{% block sidebar %} {% include "./sidebar.html" %} {% endblock %}</div>
   </div>
+  {% include "./footer.html" %}
 </body>

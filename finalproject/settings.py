@@ -26,13 +26,14 @@ SECRET_KEY = 't92sewrpw=99rl(yqwj#)wx622-z0gbghsb=a7!8$#=@*c!*v8'
 DEBUG = True
 
 ALLOWED_HOSTS = ['localhost',
-    '127.0.0.1']
+    '127.0.0.1',]
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'rest_framework',
+    'socialmedia.apps.SocialmediaConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -120,3 +121,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = 'finalProject/socialmedia/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')

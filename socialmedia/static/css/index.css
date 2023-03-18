@@ -4,6 +4,7 @@ body{
 
 .navBar{
     width: 80%;
+    height: 60px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -11,8 +12,8 @@ body{
 }
 
 .iconImg{
-    height: 10px;
-    width: 10px;
+    height: 20px;
+    width: 20px;
 }
 
 .dp{
@@ -130,6 +131,12 @@ ul{
     border-bottom: 7px solid black;
 }
 
+input{
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
 .loginInput{
     padding: 10px;
     border-radius: 10px;
@@ -138,4 +145,40 @@ ul{
 
 #centerText{
     text-align: center;
+}
+
+.singUpForm{
+    padding: 20px;
+    border-radius: 20px;
+    border-top: 2px solid black;
+    border-left: 5px solid black;
+    border-right: 5px solid black;
+    border-bottom: 7px solid black;
+}
+
+input[type="file"]{
+    width: 200px;
+    padding: 10px;
+    font-size: 15px;
+    border-top: 1px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: 5px solid black;
+}
+
+label{
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-top: 1px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: 5px solid black;
+}
+
+.logoutPage{
+    padding: 50px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-radius: 50px;
 }

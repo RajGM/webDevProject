@@ -17,8 +17,8 @@ class UserForm(forms.ModelForm):
 
 # Form for signup
 class UserProfileForm(forms.ModelForm):
-    dateOfBirth = forms.DateField(widget=forms.SelectDateWidget(years=range(1940,2022), attrs={'placeholder':'DOB(mm/dd/yyyy)', 'class':'register-input date-birth'}), label='date of birth')
-    profileImage = forms.ImageField(label='profile image', required=False)
+    dateOfBirth = forms.DateField(widget=forms.SelectDateWidget(years=range(1960,2022), attrs={'placeholder':'DOB(mm/dd/yyyy)', 'class':'register-input date-birth'}), label='DoB')
+    profileImage = forms.ImageField(label='Dp', required=False)
     class Meta:
         model = AppUser
         fields = ('dateOfBirth', 'profileImage')

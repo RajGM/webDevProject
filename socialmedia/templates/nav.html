@@ -28,7 +28,7 @@
   <div>
     <form class="search-bar" method="POST" action="{% url 'search-user'%}">
       {% csrf_token %}
-      <input type="search" placeholder="search" name="q" class="searchBar" />
+      <input type="search" placeholder="search user" name="q" class="searchBar" />
       <button type="submit" id="search-button" class="button">
         <img src="/static/assets/search.png" class="iconImg" />
       </button>

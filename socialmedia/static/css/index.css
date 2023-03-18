@@ -120,3 +120,22 @@ a{
 ul{
     list-style: none;
 }
+
+.loginForm{
+    padding: 10px;
+    border-radius: 10px;
+    border-top: 2px solid black;
+    border-left: 5px solid black;
+    border-right: 5px solid black;
+    border-bottom: 7px solid black;
+}
+
+.loginInput{
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+#centerText{
+    text-align: center;
+}

@@ -1,21 +1,32 @@
-{% extends "./register_base.html" %}
-{% block content %}
-    <div class="callout large" id="register-form">
-      SNS logo comes here...
-      {% if registered %}
-        <strong>Thank you for signing up</strong>
-        <a href="">home</a>
-        <!-- add some links to go other page -->
-      {% else %}
-          <form id="user_form" action="/signup/" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ user_form.as_p}}
-            {{ profile_form.as_p}}
-            <button type="submit" class="hollow button" id="register-button">sign me up!</button>
-          </form>
-      {% endif %}
+{% extends "./register_base.html" %} {% block content %}
+<div id="register-form">
+  {% if registered %}
+  <strong>Thank you for signing up</strong>
+  <a href="">home</a>
+
+  {% else %}
+  <form
+    id="user_form"
+    action="/signup/"
+    method="post"
+    enctype="multipart/form-data"
+  >
+    {% csrf_token %}
+    <div class="column">
+      <div>
+        {{ user_form.as_p}} 
+      </div>
+      <div>
+        {{ profile_form.as_p}}
+      </div>
+      <div>
+        <button type="submit" class="hollow button" id="register-button">
+          sign me up!
+        </button>
+      </div>
     </div>
-    <div class="callout" id="option-message">
-      <p>Have an account? <a id="register-nav" href="/login"> Login </a></p>
-    </div>
+  </form>
+  {% endif %}
+</div>
+
 {% endblock %}

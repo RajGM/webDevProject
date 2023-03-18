@@ -2,12 +2,11 @@
 <body class="column">
   {% include "./nav.html" %}
 
-  <div class="column boderDiv">
-    <div>{{ user }}</div>
+  <div id="wideDiv" class="row boderDiv">
     <div>{{ follower_count }} &nbsp;<a href="/friend_list/">Followers</a></div>
     <div>{{ following_count }} &nbsp;<a href="/friend_list/">Following</a></div>
     <div>
-      <a href="/profile" class="button">edit profile</a>
+      <a href="/profile" >Edit profile</a>
     </div>
   </div>
 
@@ -23,15 +22,7 @@
       <div>
         <button type="submit" class="button" id="new-post-button">Post</button>
       </div>
-      <div>
-        <a
-          href="#"
-          onclick="overlay()"
-          class="button alert"
-          id="new-post-button"
-          >cancel</a
-        >
-      </div>
+      
     </form>
   </div>
 

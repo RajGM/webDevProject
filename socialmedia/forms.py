@@ -44,7 +44,7 @@ class UserProfileFormUpdate(forms.ModelForm):
 
 #Form to create a new post
 class NewPostForm(forms.Form):
-    text = forms.CharField(required=True, widget=forms.Textarea(attrs={'placeholder':'Write your thoughts'}), label='', help_text="word limit : 250")
+    text = forms.CharField(required=True, widget=forms.Textarea(attrs={'placeholder':'Write your thoughts'}), label='', help_text="Limit : 250")
     media = forms.ImageField(label="image", required=False)
     user = forms.CharField(widget=forms.HiddenInput(), required=False)
 

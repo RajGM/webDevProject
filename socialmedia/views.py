@@ -3,15 +3,11 @@ from .models import *
 from .forms import *
 from .serializers import *
 from django.http import HttpResponseRedirect, HttpResponse
-#from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-#import os
 from datetime import datetime
-#from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.renderers import TemplateHTMLRenderer
-#from rest_framework import status, generics, mixins
 from rest_framework.views import APIView
 
 class PostView(APIView):
@@ -36,7 +32,6 @@ class PostView(APIView):
 
         return Response({'posts':queryset, 'user_profile':None, 'img_url':None, 'user':user,'following_list':None})
     
-
 
 #view for search users
 def user_search(request):
@@ -107,7 +102,7 @@ def user_logout(request):
 def user_profile(request):
     user = request.user
     if user.is_authenticated:
-        #get user's basic informations
+        #get user info
         user_profile = AppUser.objects.get(user=user)
         if user_profile.profileImage:
             image_url = user_profile.profileImage.url
@@ -143,7 +138,7 @@ def user_profile(request):
     return render(request, "user_profile.html", {"user":user, "user_profile":user_profile, "img_url":image_url, "user_form":user_form, "profile_form":user_profile_form})
 
 
-#view for home page pf loggedd in user
+#view for home page pf logged in user
 @login_required
 def main_user_home(request):
     user = request.user
@@ -223,7 +218,7 @@ class UserHome(APIView):
         follower_count = Follower.objects.filter(user=username).count()
         following_count = Follower.objects.filter(follower=username).count()
 
-        if request.method=="POST": #follow and unfollow user
+        if request.method=="POST": 
             #check if user is following another user or not
             if Follower.objects.filter(user=username, follower=request.user):
                 Follower.objects.filter(user=request.data['user'], follower=request.user).delete()
@@ -239,7 +234,7 @@ class UserHome(APIView):
                     #create a new chat room name
                     room_name = str(request.user) + '_' + str(username)
                     room_name = str(room_name)
-                if follower_serializer.is_valid(): #data alidation
+                if follower_serializer.is_valid(): #data 
                     follower_serializer.save(chat_room=room_name)
                     following=True
 

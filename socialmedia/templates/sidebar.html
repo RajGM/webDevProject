@@ -1,13 +1,15 @@
-<div class="sideBar">
+<div class="sideBar boderDiv">
 {% if user.is_authenticated %}  
    
-    <div class="sidebar-chat">
-      <h5>Chat rooms </h5>
-      <ul>
-        {% for following in following_list %}
-        <li><a href="/chat/{{ following.chat_room }}"> {{ following.user }} </a></li>
+    <div >
+      <div>Chat rooms </div>
+        <div class="chatRoomList">
+        {% for following in following_list %}<a href="/chat/{{ following.chat_room }}"> <div class="button"> 
+          {{ following.user }}
+        </div>  </a>
         {% endfor %}
-      </ul>
+      </div>
+        
     </div>
   
   {% else %}

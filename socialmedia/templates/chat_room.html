@@ -1,4 +1,4 @@
-{% extends "snsApp/home_base.html" %}
+{% extends "./home_base.html" %}
 {% block content %}
   {% if user.is_authenticated %}
   <textarea id="chat-log" cols="100" rows="20"></textarea><br>
@@ -42,5 +42,5 @@
   {% endif%}
 {% endblock %}
 {% block sidebar%}
-  {% include "snsApp/sidebar.html" %}
+  {% include "./sidebar.html" %}
 {% endblock %}

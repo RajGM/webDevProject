@@ -26,14 +26,14 @@
               {% csrf_token %}
               <input type="hidden" name="user" value="{{ subuser }}">
               <input type="hidden" name="follower" value="{{ user }}">
-              <button type="submit" name="button" class="hollow button success">Following <i class="fi-check"></i></button>
+              <button type="submit" name="button" class="button">Following </button>
             </form>
           {% else %}
             <form class="follow" action="/{{ subuser }}/" method="POST">
               {% csrf_token %}
               <input type="hidden" name="user" value="{{ subuser }}">
               <input type="hidden" name="follower" value="{{ user }}">
-              <button type="submit" name="button" class="hollow button primary">Follow <i class="fi-plus"></i></button>
+              <button type="submit" name="button" class="button">Follow </button>
             </form>
           {% endif %}
           </div>

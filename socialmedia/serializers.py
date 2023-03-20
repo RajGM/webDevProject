@@ -13,7 +13,7 @@ class PostSerializer(serializers.ModelSerializer):
         model = Post
         fields = ['postId', 'user', 'postDate', 'text', 'media', 'likes']
 
-#User nad post serializer model
+#User and post serializer model
 class UserSerializer(serializers.ModelSerializer):
     profile = AppUserSerializer(read_only=True)
     posts = PostSerializer(many=True, read_only=True)

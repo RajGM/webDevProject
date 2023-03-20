@@ -33,12 +33,11 @@ class PostView(APIView):
         return Response({'posts':queryset, 'user_profile':None, 'img_url':None, 'user':user,'following_list':None})
     
 
-#view for search users
+#Search users
 def user_search(request):
     if request.method == "POST":
         search = request.POST['q']
         if search:
-            #return all users that partially match with input
             result=User.objects.filter(username__contains=search)
             images = []
             for user in result:
@@ -55,7 +54,7 @@ def user_search(request):
     else:
         return HttpResponseRedirect("/")
     
-#view for register a new user
+#Register user
 def register(request):
     registered = False
 
@@ -76,7 +75,7 @@ def register(request):
 
     return render(request, 'signup.html', {'user_form': user_form, 'profile_form':profile_form, 'registered':registered})
 
-#view for user login
+#User login
 def user_login(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -92,17 +91,16 @@ def user_login(request):
             return HttpResponse("Invalid login")
     return render(request, 'login.html', {})
 
-#view for user logout
+#User logout
 def user_logout(request):
     logout(request)
     return render(request, "logout.html")
 
-#view for user to see and update their profile information
+#User fetch and update
 @login_required
 def user_profile(request):
     user = request.user
     if user.is_authenticated:
-        #get user info
         user_profile = AppUser.objects.get(user=user)
         if user_profile.profileImage:
             image_url = user_profile.profileImage.url
@@ -112,7 +110,6 @@ def user_profile(request):
             old_image_url = None
 
         if request.method == "POST":
-            #update user's information
             user_form = UserFormUpdate(request.POST or None, instance=user)
             user_profile_form = UserProfileFormUpdate(request.POST or None, request.FILES, instance=user_profile, initial={})
             if user_form.is_valid() and user_profile_form.is_valid():#form validation
@@ -138,7 +135,7 @@ def user_profile(request):
     return render(request, "user_profile.html", {"user":user, "user_profile":user_profile, "img_url":image_url, "user_form":user_form, "profile_form":user_profile_form})
 
 
-#view for home page pf logged in user
+#LoggedIn homepage
 @login_required
 def main_user_home(request):
     user = request.user
@@ -149,16 +146,14 @@ def main_user_home(request):
         else:
             img_url = None
         if request.method=="POST":
-            #create a status update
             post_form = NewPostForm(request.POST, request.FILES)
             if post_form.is_valid(): #form validation
                 post_form.save(user=user, time=datetime.now())
         else:
             post_form = NewPostForm()
 
-        #get all user's post
+        
         post = Post.objects.filter(user=user).order_by('-postId')
-        #get a count of user's followers and followings
         follower_count = Follower.objects.filter(user=request.user).count()
         following_count = Follower.objects.filter(follower=request.user).count()
 
@@ -167,10 +162,9 @@ def main_user_home(request):
     
     return render(request, "user_home.html", {"user_profile":user_profile, "img_url":img_url, "post_form":post_form, "posts":post, "follower_count":follower_count, "following_count":following_count})
 
-#view for get a list of follower and following of a user
+#list of follower and following
 def network_list(request):
     if request.method == "GET":
-        #get a list and count of user's followers and followings
         follower_list=[]
         followers = Follower.objects.filter(user=request.user)
         for user in followers:
@@ -184,7 +178,7 @@ def network_list(request):
     else:
         return HttpResponseRedirect("user_home/")
 
-#api view for all user home
+#Common Home View 
 class UserHome(APIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = "user.html"
@@ -219,7 +213,6 @@ class UserHome(APIView):
         following_count = Follower.objects.filter(follower=username).count()
 
         if request.method=="POST": 
-            #check if user is following another user or not
             if Follower.objects.filter(user=username, follower=request.user):
                 Follower.objects.filter(user=request.data['user'], follower=request.user).delete()
                 following=False
@@ -227,20 +220,18 @@ class UserHome(APIView):
                 post_query = Follower.objects.all()
                 room_name =''
                 follower_serializer = FollowerSerializer(data=request.data)
-                #check if chat room already exist or not
                 if Follower.objects.filter(user=request.user, follower=username):
                     room_name = Follower.objects.get(user=request.user, follower=username).chat_room
                 else:
-                    #create a new chat room name
                     room_name = str(request.user) + '_' + str(username)
                     room_name = str(room_name)
-                if follower_serializer.is_valid(): #data 
+                if follower_serializer.is_valid():  
                     follower_serializer.save(chat_room=room_name)
                     following=True
 
         return Response({"subuser":queryset, "user_profile": user.data['profile'], "img_url": img_url, "posts":user.data['posts'],"following":following, "follower_count":follower_count, "following_count":following_count})
 
-#view for a chat room
+#ChatRoom
 def chat_room(request, room_name):
     user_profile = AppUser.objects.get(user=request.user)
     if user_profile.profileImage:
@@ -253,3 +244,5 @@ def chat_room(request, room_name):
         following_list.append(following)
     username = str(request.user)
     return render(request, "chat_room.html", {'room_name':room_name, "username":username, 'user_profile':user_profile,'img_url':image_url,'following_list':following_list})
+
+

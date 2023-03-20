@@ -18,7 +18,7 @@ class Post(models.Model):
     postDate = models.DateField(null=True)
     text = models.CharField(max_length=250)
     likes = models.IntegerField(null=True)
-    media = models.ImageField(upload_to='dp')
+    media = models.ImageField(upload_to='post')
 
 #Connection model
 class Follower(models.Model):

@@ -1,11 +1,6 @@
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-from rest_framework.parsers import JSONParser
 from .models import *
 from .serializers import *
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from rest_framework import status, generics, mixins
+from rest_framework import generics, mixins
 
 #API for username
 class UserList(generics.ListAPIView):
@@ -17,7 +12,7 @@ class UserList(generics.ListAPIView):
         return user
 
 #API for postId
-class PostsList(generics.ListAPIView):
+class PostByID(generics.ListAPIView):
     serializer_class = PostSerializer
 
     def get_queryset(self):
@@ -25,7 +20,7 @@ class PostsList(generics.ListAPIView):
         return Post.objects.filter(postId=postId)
 
 #API for post list
-class NewPostList(generics.ListAPIView, mixins.CreateModelMixin):
+class PostList(generics.ListAPIView, mixins.CreateModelMixin):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 

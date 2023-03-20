@@ -1,19 +1,19 @@
 from rest_framework import serializers
 from .models import *
 
-#serializer of AppUser model
+#User serializer  model
 class AppUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = AppUser
         fields = ['profileImage', 'dateOfBirth', 'bio']
 
-#serializer for post model
+#Post serializer model
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = ['postId', 'user', 'postDate', 'text', 'media', 'likes']
 
-#serializer combining user model, appuser model and post model
+#User nad post serializer model
 class UserSerializer(serializers.ModelSerializer):
     profile = AppUserSerializer(read_only=True)
     posts = PostSerializer(many=True, read_only=True)
@@ -21,7 +21,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ['username', 'first_name', 'last_name','profile','posts']
 
-#serializer for follower model
+#Follower serializer model
 class FollowerSerializer(serializers.ModelSerializer):
     class Meta:
         model=Follower

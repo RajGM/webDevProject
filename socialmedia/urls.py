@@ -20,5 +20,4 @@ urlpatterns = [
     path('api/post/', api.NewPostList.as_view(), name='new-post'),
 ]
 
-# urlpatterns += static(settings.STATIC_URL)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

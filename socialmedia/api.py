@@ -7,7 +7,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status, generics, mixins
 
-#api for specific user, specify by username
+#API for username
 class UserList(generics.ListAPIView):
     serializer_class = UserSerializer
 
@@ -16,7 +16,7 @@ class UserList(generics.ListAPIView):
         user = User.objects.filter(username=username)
         return user
 
-#api for a specific post specified by postId
+#API for postId
 class PostsList(generics.ListAPIView):
     serializer_class = PostSerializer
 
@@ -24,7 +24,7 @@ class PostsList(generics.ListAPIView):
         postId = self.kwargs['pk']
         return Post.objects.filter(postId=postId)
 
-#api for all post
+#API for post list
 class NewPostList(generics.ListAPIView, mixins.CreateModelMixin):
     queryset = Post.objects.all()
     serializer_class = PostSerializer

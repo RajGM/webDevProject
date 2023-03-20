@@ -3,7 +3,7 @@ from .models import *
 from django.forms import ModelForm
 from django.contrib.auth.models import User
 
-# Form for signup
+# Signup form
 class UserForm(forms.ModelForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'username', 'class':'register-input'}), label='')
     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder':'password', 'class':'register-input'}), label='')
@@ -15,7 +15,7 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ('username', 'password', 'email', 'first_name', 'last_name',)
 
-# Form for signup
+# SignUp form Image and DoB
 class UserProfileForm(forms.ModelForm):
     dateOfBirth = forms.DateField(widget=forms.SelectDateWidget(years=range(1960,2022), attrs={'placeholder':'DOB(mm/dd/yyyy)', 'class':'register-input date-birth'}), label='DoB')
     profileImage = forms.ImageField(label='Dp', required=False)
@@ -23,8 +23,7 @@ class UserProfileForm(forms.ModelForm):
         model = AppUser
         fields = ('dateOfBirth', 'profileImage')
 
-# Forms for user to update their profiles
-#First form
+# Update Form
 class UserFormUpdate(forms.ModelForm):
     email = forms.EmailField(required=False, widget=forms.TextInput(attrs={'class':'profile-update', "id":"profile-update"}), label='email:')
     first_name = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'profile-update'}), label='first name')
@@ -34,7 +33,6 @@ class UserFormUpdate(forms.ModelForm):
         model = User
         fields = ('first_name', 'last_name','email')
 
-# Second form
 class UserProfileFormUpdate(forms.ModelForm):
     bio = forms.CharField(required=False, widget=forms.Textarea(), label='bio')
     profileImage = forms.ImageField(label='profile image', required=False)
@@ -42,7 +40,7 @@ class UserProfileFormUpdate(forms.ModelForm):
         model = AppUser
         fields = ('bio', 'profileImage')
 
-#Form to create a new post
+#Newpost Form
 class NewPostForm(forms.Form):
     text = forms.CharField(required=True, widget=forms.Textarea(attrs={'placeholder':'Write your thoughts'}), label='', help_text="Limit : 250")
     media = forms.ImageField(label="image", required=False)

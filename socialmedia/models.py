@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
+# User models
 class AppUser(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
     profileImage = models.ImageField(upload_to='dp', null=True, blank=True)
@@ -11,7 +11,7 @@ class AppUser(models.Model):
     def __unicode__(self):
         return self.user.username
 
-# model for each post
+# Post Model
 class Post(models.Model):
     postId = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name='posts')
@@ -20,7 +20,7 @@ class Post(models.Model):
     likes = models.IntegerField(null=True)
     media = models.ImageField(upload_to='dp')
 
-#model for relationship between users
+#Connection model
 class Follower(models.Model):
     user = models.CharField(max_length=200)
     follower = models.CharField(max_length=200)

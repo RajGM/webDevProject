@@ -164,7 +164,7 @@ def main_user_home(request):
 
     else:
         return HttpResponseRedirect('/login')
-
+    
     return render(request, "user_home.html", {"user_profile":user_profile, "img_url":img_url, "post_form":post_form, "posts":post, "follower_count":follower_count, "following_count":following_count})
 
 #view for get a list of follower and following of a user

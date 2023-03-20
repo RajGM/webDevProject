@@ -1,13 +1,24 @@
-<div class="feedDiv">
+<div class="column boderDiv" style='padding:10px; margin: 10px;' >
     {% for post in posts %}
-    <div class="card" style='margin-top: 10px'>
+    <div class="boderDiv" style='padding:10px'>
       {% if post.media %}
-      <img class="post-img" src="{{ post.media.url }}" >
+      <div>
+        <img class="post-img" src="{{ post.media.url }}" style="max-height: 400px; max-width: 400px;">
+      </div>
       {% endif %}
-      <div class="card-section">
-        <p> user : <a href="/{{ post.user }}">{{ post.user }}</a> </p>
-        <p>{{ post.text }} ({{ post.postDate }})</p>
-        <p><i class="fi-heart"></i>{{post.likes}} </p>
+
+      <div>
+        <div style="max-width: 800px;">
+          <p style="word-wrap: break-word;">
+            {{ post.text }}
+          </p> 
+        </div>
+        <div>
+          PostedOn: {{ post.postDate }}
+        </div>
+        <div>
+          PostedBy: <a href="/{{ post.user }}">{{ post.user }}</a>
+        </div>
       </div>
     </div>
     {% endfor %}

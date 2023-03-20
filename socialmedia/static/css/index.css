@@ -85,10 +85,6 @@ a{
     border: 1px solid black;
 }
 
-.feedDiv{
-    background-color: chartreuse;
-}
-
 .sideBar{
     display: flex;
     flex-direction: column;

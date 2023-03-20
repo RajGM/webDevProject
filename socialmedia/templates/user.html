@@ -1,25 +1,27 @@
 {% include "./header.html" %}
-<body>
+<body class="column">
   {% include "./nav.html" %}
-  <div class="grid-containor">
-    <div class="grid-x grid-margin-x">
-      <div class="cell large-2"></div>
-      <div class="large-8 cell">
-        <div class="user-home-profile" id="user-home-profile-img">
-          {% if img_url %}
-            <img class="thumbnail" id="user-home-profile-thumbnail" src="{{ img_url }}" alt="user profile image">
-          {% else %}
-            <img class="thumbnail" id="user-home-profile-thumbnail" src="/static/media/blank.png" alt="user profile image">
-          {% endif %}
-        </div>
-        <div class="user-home-profile" id="user-home-profile-info">
-          <h4 >{{ subuser }}</h4>
-          <p> {{ subuser.first_name}} {{ subuser.last_name}}</p>
-          <p>ocupation : {{ user_profile.ocupation }}</p>
-          <p>organization : {{ user_profile.organization }}</p>
-          <p>{{ user_profile.bio }}</p>
-          <p>{{ follower_count }} Followers &nbsp;&nbsp;&nbsp;{{ following_count }} Following</p>
-          {% if following %}
+  <div >
+    <div >
+      <div class="boderDiv" style="padding:10px">
+        <div class="column">
+          <div>
+            Username: {{ subuser }}
+          </div>
+          <div>
+            Name: {{ subuser.first_name}} {{ subuser.last_name}}
+          </div>
+          <div>
+            Bio: {{ user_profile.bio }}
+          </div>
+          <div>
+            Followers: {{ follower_count }}
+          </div>
+          <div>
+            Following: {{ following_count }}
+          </div>
+          <div>
+            {% if following %}
             <form class="follow" action="/{{ subuser }}/" method="POST">
               {% csrf_token %}
               <input type="hidden" name="user" value="{{ subuser }}">
@@ -34,28 +36,9 @@
               <button type="submit" name="button" class="hollow button primary">Follow <i class="fi-plus"></i></button>
             </form>
           {% endif %}
-        </div>
-      </div>
-      <div class="cell auto"></div>
-    </div>
-  </div>
-  <div class="grid-containor">
-    <div class="grid-x grid-margin-x">
-      <div class="cell large-3"></div>
-      <div class="large-5 cell">
-        {% for post in posts reversed %}
-        <div class="card">
-          {% if post.media %}
-          <img class="post-img" src="{{ post.media }}" >
-          {% endif %}
-          <div class="card-section">
-            <p>{{ post.text }} ({{ post.postDate }})</p>
-            <p><i class="fi-heart"></i> x likes</p>
           </div>
         </div>
-        {% endfor %}
       </div>
-      <div class="auto cell"></div>
     </div>
   </div>
   {% include "./footer.html" %}

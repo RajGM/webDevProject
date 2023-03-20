@@ -1,27 +1,28 @@
 {% include "./header.html" %}
-<body>
+<body class="column">
   {% include "./nav.html" %}
-  <div class="grid-containor">
-    <div class="grid-x grid-margin-x">
-      <div class="cell large-3"></div>
-      <div class="cell large-7">
-        <h5 style="margin-bottom:50px;">search result....</h5>
+  <div class="column boderDiv">
+      <div>
+        Searches
+      </div>
+      <div class="row">
+        <div>
+          UserName
+        </div>
+        <div>
+          <p>FirstName LastName</p>
+        </div>
+      </div>
         {% for user, img in search_result %}
-              <div class="search-result" id="search-result-img">
-                {% if img %}
-                  <a href="{{ user }}"><img src="{{ img }}" class="thumbnail"> </a>
-                {% else %}
-                  <a href="{{ user }}"><img src="/static/media/blank.png" class="thumbnail"></a>
-                {% endif %}
-              </div>
-              <div class="search-result" id="search-result-info">
-                <a href="/{{ user }}/"> {{ user }}</a>
-                <p>{{ user.first_name }} {{ user.last_name }}</p>
+              <div class="row">
+                <div>
+                  <a href="/{{ user }}/"> {{ user }}</a>
+                </div>
+                <div>
+                  <p>{{ user.first_name }} {{ user.last_name }}</p>
+                </div>
               </div>
         {% endfor %}
-      </div>
-      <div class="cell auto"></div>
-    </div>
   </div>
   {% include "./footer.html" %}
 </body>

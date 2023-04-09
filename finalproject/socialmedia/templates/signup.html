@@ -1,0 +1,32 @@
+{% extends "./register_base.html" %} {% block content %}
+<div id="register-form">
+  {% if registered %}
+  <strong>Thank you for signing up</strong>
+  <a href="">home</a>
+
+  {% else %}
+  <form
+    id="user_form"
+    action="/signup/"
+    method="post"
+    enctype="multipart/form-data"
+  >
+    {% csrf_token %}
+    <div class="singUpForm column">
+      <div>
+        {{ user_form.as_p}} 
+      </div>
+      <div>
+        {{ profile_form.as_p}}
+      </div>
+      <div>
+        <button type="submit" class="hollow button" id="register-button">
+          sign me up!
+        </button>
+      </div>
+    </div>
+  </form>
+  {% endif %}
+</div>
+
+{% endblock %}

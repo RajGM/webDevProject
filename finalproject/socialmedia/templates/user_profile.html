@@ -1,0 +1,76 @@
+{% extends "./home_base.html" %}
+{% block content %}
+  {% if user.is_authenticated %}
+  {% csrf_token %}
+    <div class="column boderDiv"  style="width: 800px; height: 650px; margin-top: 10px; margin-bottom: 10px;">
+
+      <div class="column">
+
+        <div class="row">
+          <div >
+            <label >user</label>
+          </div>
+          <div>
+            <p>{{ user }}</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div >
+            <label >DoB:</label>
+          </div>
+          <div>
+            <p>{{ user_profile.dateOfBirth }}</p>
+          </div>
+        </div>
+
+      </div>
+        
+      <div class="column">
+        {% csrf_token %}
+        <form class="column" action="/profile/" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="cloumn" style="width: 700px;">
+            {% for field in user_form %}
+              <div class="row">
+                <div>
+                  <label >{{ field.label }}</label>
+                </div>
+                <div>
+                  {{ field }}
+                </div>
+              </div>
+              <div style="height: 20px;">
+
+              </div>
+            {% endfor %}
+
+            {% for field in profile_form %}
+              <div class="row">
+                <div>
+                  <label class="text-right middle">{{ field.label }}</label>
+                </div>
+                <div>
+                  {{ field }}
+                </div>
+              </div>
+              <div style="height: 20px;">
+
+              </div>
+            {% endfor %}
+
+          </div>
+
+          <div>
+            <button type="submit" class="button" id="update-button" onclick="testClick()">UpdateProfile</button>
+          </div>
+          
+        </form>
+  
+      </div>
+      
+    </div>
+
+  {% endif%}
+
+{% endblock %}

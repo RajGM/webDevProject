@@ -1,0 +1,15 @@
+{% extends "./home_base.html" %}
+{% block content %}
+  {% if user.is_authenticated %}
+  <div class="column" style="padding:10px">
+  <textarea id="chatArea" cols="100" rows="20"></textarea><br>
+  <input id="chatInput" type="text" size="100" ><br>
+  <input class="button" id="messageSend" type="button" value="Send">
+  
+  
+    </div>
+  {% endif%}
+{% endblock %}
+{% block sidebar%}
+  {% include "./sidebar.html" %}
+{% endblock %}

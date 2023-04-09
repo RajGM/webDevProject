@@ -1,0 +1,187 @@
+body{
+    background-color: whitesmoke;
+}
+
+.navBar{
+    width: 80%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.iconImg{
+    height: 20px;
+    width: 20px;
+}
+
+.dp{
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    border-top: 1px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: 5px solid black;
+}
+
+.navRightDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 150px;
+}
+
+.button{
+    padding:5px;
+    border-radius: 5px;
+    text-decoration: none;
+    border: 1px solid black;
+    border-left: 5px solid black;
+    border-bottom: 5px solid black;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.searchBar{
+    border-width: 5px;
+    border-radius: 20px;
+}
+
+.footerBar{
+    height: 30px;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.boderDiv{
+    border-top: 1px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: 5px solid black;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.mainBody{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border: 1px solid black;
+}
+
+.sideBar{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 5px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.chatRoomList{
+    display: flex;
+    flex-direction: column;
+    min-height: 100px;
+    justify-content: center;
+    font-size: 15px;
+    gap:10px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+ul{
+    list-style: none;
+}
+
+.loginForm{
+    padding: 10px;
+    border-radius: 10px;
+    border-top: 2px solid black;
+    border-left: 5px solid black;
+    border-right: 5px solid black;
+    border-bottom: 7px solid black;
+}
+
+input{
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+.loginInput{
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+#centerText{
+    text-align: center;
+}
+
+.singUpForm{
+    padding: 20px;
+    border-radius: 20px;
+    border-top: 2px solid black;
+    border-left: 5px solid black;
+    border-right: 5px solid black;
+    border-bottom: 7px solid black;
+}
+
+input[type="file"]{
+    width: 200px;
+    padding: 10px;
+    font-size: 15px;
+    border-top: 1px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: 5px solid black;
+}
+
+label{
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-top: 1px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: 5px solid black;
+}
+
+.logoutPage{
+    padding: 50px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-radius: 50px;
+}
+
+.paddingDiv{
+    padding: 10px;
+}
+
+
+textarea{
+    resize: none;
+}

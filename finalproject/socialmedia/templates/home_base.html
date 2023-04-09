@@ -1,0 +1,11 @@
+{% include "./header.html" %}
+<body class="column">
+  {% include "./nav.html" %}
+  <div class="mainBody">
+    <div>
+      {% block content %} {% include "./home_feed.html"%} {% endblock %}
+    </div>
+    <div>{% block sidebar %} {% include "./sidebar.html" %} {% endblock %}</div>
+  </div>
+  {% include "./footer.html" %}
+</body>

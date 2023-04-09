@@ -1,0 +1,30 @@
+{% include "./header.html" %}
+<body class="column">
+  {% include "./nav.html" %}
+
+  <div id="wideDiv" class="row boderDiv">
+    <div>{{ follower_count }} &nbsp;<a href="/friend_list/">Followers</a></div>
+    <div>{{ following_count }} &nbsp;<a href="/friend_list/">Following</a></div>
+    <div>
+      <a href="/profile" >Edit profile</a>
+    </div>
+  </div>
+
+  <div class="column">
+    <form
+      action="/user_home/"
+      method="post"
+      enctype="multipart/form-data"
+      class="column"
+    >
+      {% csrf_token %}
+      <div>{{ post_form.as_p }}</div>
+      <div>
+        <button type="submit" class="button" id="new-post-button">Post</button>
+      </div>
+      
+    </form>
+  </div>
+
+  {% include "./footer.html" %}
+</body>

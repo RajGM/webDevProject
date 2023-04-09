@@ -1,0 +1,28 @@
+{% include "./header.html" %}
+<body class="column">
+  {% include "./nav.html" %}
+  <div class="column boderDiv">
+      <div>
+        Searches
+      </div>
+      <div class="row">
+        <div>
+          UserName
+        </div>
+        <div>
+          <p>FirstName LastName</p>
+        </div>
+      </div>
+        {% for user, img in search_result %}
+              <div class="row">
+                <div>
+                  <a href="/{{ user }}/"> {{ user }}</a>
+                </div>
+                <div>
+                  <p>{{ user.first_name }} {{ user.last_name }}</p>
+                </div>
+              </div>
+        {% endfor %}
+  </div>
+  {% include "./footer.html" %}
+</body>

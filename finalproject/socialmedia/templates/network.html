@@ -1,0 +1,31 @@
+{% include "./header.html" %}
+<body class="column">
+  {% include "./nav.html" %}
+  <div class="column boderDiv">
+    <div >
+      <div class="row">
+        <div class="">
+          <div>
+            Followers:
+          </div>
+        </div>  
+          {% for user in follower_list %}
+            <div><a href="/{{ user.follower }}/">{{ user.follower }}</a></div>
+          {% endfor %}
+      </div>
+
+      <div class="row">
+        <div>
+          Following
+        </div>
+        <div class="row">
+          {% for user in following_list %}
+          <div><a href="/{{ user.user }}/">{{ user.user }}</a></div>
+          {% endfor %}
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  {% include "./footer.html" %}
+</body>

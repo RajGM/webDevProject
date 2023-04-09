@@ -1,0 +1,45 @@
+{% include "./header.html" %}
+<body class="column">
+  {% include "./nav.html" %}
+  <div >
+    <div >
+      <div class="boderDiv" style="padding:10px">
+        <div class="column">
+          <div>
+            Username: {{ subuser }}
+          </div>
+          <div>
+            Name: {{ subuser.first_name}} {{ subuser.last_name}}
+          </div>
+          <div>
+            Bio: {{ user_profile.bio }}
+          </div>
+          <div>
+            Followers: {{ follower_count }}
+          </div>
+          <div>
+            Following: {{ following_count }}
+          </div>
+          <div>
+            {% if following %}
+            <form class="follow" action="/{{ subuser }}/" method="POST">
+              {% csrf_token %}
+              <input type="hidden" name="user" value="{{ subuser }}">
+              <input type="hidden" name="follower" value="{{ user }}">
+              <button type="submit" name="button" class="button">Following </button>
+            </form>
+          {% else %}
+            <form class="follow" action="/{{ subuser }}/" method="POST">
+              {% csrf_token %}
+              <input type="hidden" name="user" value="{{ subuser }}">
+              <input type="hidden" name="follower" value="{{ user }}">
+              <button type="submit" name="button" class="button">Follow </button>
+            </form>
+          {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% include "./footer.html" %}
+</body>
